@@ -1,0 +1,29 @@
+<h1>Participant Form</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form url method="post">
+  {% csrf_token %}
+  <fieldset class="module aligned">
+    <div class="form-row">
+      <label>Name:</label>
+      {{ form.name }}
+    </div>
+    <div class="form-row">
+      <label>Age:</label>
+      {{ form.age }}
+    </div>
+    <div class="form-row">
+      <label for="participant_siblings">Siblings?</label>
+      {{ form.siblings }}
+    </div>
+    <div class="form-row">
+      <label>Please list any environmental exposures:</label>
+      {{ form.env_exposures }}
+    </div>
+    <div class="form-row">
+      <label>Please describe any known genetic mutations:</label>
+      {{ form.genetic_mutations }}
+    </div>
+  </fieldset>
+  <input class="btn btn-primary" type="submit" value="Submit" />
+  <a class="btn btn-default" href="{% url 'participants:index' %}">Cancel</a>
+</form

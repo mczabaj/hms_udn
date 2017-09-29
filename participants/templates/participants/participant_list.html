@@ -1,0 +1,13 @@
+{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+
+<a class="btn btn-primary" href="{% url 'participants:new' %}">+ Add Participant</a>
+
+{% if participant_list %}
+    <ul>
+    {% for ppt in participant_list %}
+        <li><a href="{% url 'participants:detail' ppt.id %}">{{ ppt.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No participants are available.</p>
+{% endif %}
