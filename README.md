@@ -22,6 +22,13 @@ Clone the repo:
 Starting the app:
   `python manage.py runserver`
 
+To the App:
+  navigate to `http://127.0.0.1:8000/`
+
+Admin Console access (at `http://127.0.0.1:8000/admin/`)
+  Username: `admin`
+  Password: `P@$$w0rd`
+
 # Enhancements #
 
 ## Security ##
