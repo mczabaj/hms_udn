@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>HMS UDN</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/participants.css' %}">
+  </head>
+  <body>
+    {% block content %}
+    {% endblock %}
+  </body>
+  <footer>
+    <script>
+      function update_status(ppt_pk){
+        alert("the value of the status is: " + $this.value());
+        xhr=$.ajax({
+          url: location.href,
+          type: 'PUT',
+          data:{ id: id, status: this.value },
+          dataType: 'json'
+        });
+        xhr.done( function( data ){
+           // successful submission
+        });
+      };
+    </script>
+  </footer>
+</html>

@@ -20,5 +20,8 @@ class ParticipantDelete(DeleteView):
     model = Participant
     success_url = reverse_lazy('participants:index')
 
+class AjaxableResponseMixin(object):
+    """Adding AJAX support to the index/list view"""
+
 class ParticipantList(ListView):
     model = Participant

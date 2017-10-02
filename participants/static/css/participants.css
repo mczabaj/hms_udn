@@ -1,0 +1,36 @@
+body {
+  padding-left: 15;
+}
+h1 {
+  color: darkblue;
+}
+th, td {
+  padding: 5;
+}
+textarea {
+  width: 100%;
+}
+fieldset {
+  padding-top: 20;
+}
+
+.btn {
+  margin-top: 12;
+  margin-bottom: 12;
+}
+.error {
+  color: red;
+}
+.container {
+  margin-right: inherit;
+  margin-left: inherit;
+  margin-top: 20;
+  margin-bottom: 20;
+  background-color: lightgray;
+  width: 75%;
+}
+.custom-border{
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 4px;
+}

@@ -1,13 +1,51 @@
-{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+{% extends 'participants/base.html' %}
+{% block content %}
+  <h1>UDN Particpants</h1>
 
-<a class="btn btn-primary" href="{% url 'participants:new' %}">+ Add Participant</a>
+  {% if message %}
+  <div class="alert alert-primary" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>{{ message }}</strong>
+  </div>
+  {% endif %}
 
-{% if participant_list %}
-    <ul>
-    {% for ppt in participant_list %}
-        <li><a href="{% url 'participants:detail' ppt.id %}">{{ ppt.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No participants are available.</p>
-{% endif %}
+  <div>
+    <a class="btn btn-primary btn-add" href="{% url 'participants:new' %}">+ Add Participant</a>
+  </div>
+  {% if participant_list %}
+      <table class="table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name:</th>
+            <th>Status:</th>
+            <th>Age:</th>
+            <th>Siblings:</th>
+            <th>Environmental Exposures:</th>
+            <th>Genetic Mutations:</th>
+          </tr>
+        </thead>
+        <tbody>
+      {% for ppt in participant_list %}
+          <tr>
+            <td><a href="{% url 'participants:detail' ppt.id %}">{{ ppt.name }}</a></td>
+            <td>
+              <select class=status onchange="update_status({{ppt.pk}})">
+                <option value="NR" {% if ppt.status == "NR" %}selected="selected"{% endif %}>Not Reviewed</option>
+                <option value="RA" {% if ppt.status == "RA" %}selected="selected"{% endif %}>Reviewed - Accepted</option>
+                <option value="RN" {% if ppt.status == "RN" %}selected="selected"{% endif %}>Reviewed - Not Accepted</option>
+              </select>
+            </td>
+            <td>{{ ppt.age }}</td>
+            <td>{{ ppt.siblings }}</td>
+            <td>{{ ppt.env_exposures }}</td>
+            <td>{{ ppt.genetic_mutations }}</td>
+          </tr>
+      {% endfor %}
+        </tbody>
+      </table>
+  {% else %}
+      <p>No participants are available.</p>
+  {% endif %}
+{% endblock %}
