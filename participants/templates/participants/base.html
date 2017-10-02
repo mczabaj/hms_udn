@@ -11,19 +11,7 @@
     {% endblock %}
   </body>
   <footer>
-    <script>
-      function update_status(ppt_pk){
-        alert("the value of the status is: " + $this.value());
-        xhr=$.ajax({
-          url: location.href,
-          type: 'PUT',
-          data:{ id: id, status: this.value },
-          dataType: 'json'
-        });
-        xhr.done( function( data ){
-           // successful submission
-        });
-      };
-    </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="{% static "javascript/participants-list.js" %}" type="text/javascript"></script>
   </footer>
 </html>

@@ -25,3 +25,11 @@ class AjaxableResponseMixin(object):
 
 class ParticipantList(ListView):
     model = Participant
+
+    def post(self, request, *args, **kwargs):
+        id = request.POST.get('id')
+        status = request.POST.get('status')
+        ppt = Participant.objects.get(pk=id)
+        ppt.status = status
+        ppt.save()
+        return HttpResponse({'participant_list': Participant.objects.all()})

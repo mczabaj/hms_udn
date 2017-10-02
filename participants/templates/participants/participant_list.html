@@ -31,7 +31,7 @@
           <tr>
             <td><a href="{% url 'participants:detail' ppt.id %}">{{ ppt.name }}</a></td>
             <td>
-              <select class=status onchange="update_status({{ppt.pk}})">
+              <select class=status onchange="update_status({{ppt.pk}}, this.options[this.selectedIndex].value)">
                 <option value="NR" {% if ppt.status == "NR" %}selected="selected"{% endif %}>Not Reviewed</option>
                 <option value="RA" {% if ppt.status == "RA" %}selected="selected"{% endif %}>Reviewed - Accepted</option>
                 <option value="RN" {% if ppt.status == "RN" %}selected="selected"{% endif %}>Reviewed - Not Accepted</option>
